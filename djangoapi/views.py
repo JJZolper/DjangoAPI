@@ -123,7 +123,7 @@ def favorites(request):
 
 # API Schema
 schema = coreapi.Document(
-    title='EaseCentral API',
+    title='Django API',
     content={
         'register': coreapi.Link(
             url='/register/',
