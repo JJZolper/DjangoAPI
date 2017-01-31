@@ -1,0 +1,13 @@
+dj-database-url==0.4.1
+Django==1.10.5
+gunicorn==19.6.0
+psycopg2==2.6.2
+whitenoise==3.2
+djangorestframework==3.5.3
+markdown==2.6.7
+django-filter==1.0.1
+requests==2.13.0
+django-rest-swagger==2.1.0
+coreapi==2.1.1
+django-cors-headers==1.2.0
+
