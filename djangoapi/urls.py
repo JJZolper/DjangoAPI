@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib import admin
 
 from djangoapi import views as djapi_views
@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^reddit/$', djapi_views.reddit, name='reddit'),
     url(r'^favorite/$', djapi_views.favorite, name='favorite'),
     url(r'^favorites/$', djapi_views.favorites, name='favorites'),
+    url(r'^tag/$', djapi_views.tag, name='tag'),
 ]
