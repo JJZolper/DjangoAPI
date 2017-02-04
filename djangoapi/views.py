@@ -47,9 +47,17 @@ def reddit(request):
     # Check if the token is valid
     if token:
         result = []
-        r = requests.get('https://www.reddit.com/hot.json')
+        while True:
+            try:
+                r = requests.get('https://www.reddit.com/hot.json')
+                data = r.json()
+                if r.status_code == 200 and data["data"]:
+                    break
+                else:
+                    continue
+            except requests.exceptions.RequestException as e:
+                return "Error: {}".format(e)
         # Data is a dictionary ingested from the json response
-        data = r.json()
         datalen = len(data["data"])
         # List of dictionaries with the results
         for i in range(datalen):
