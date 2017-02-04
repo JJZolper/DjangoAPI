@@ -66,9 +66,10 @@ def reddit(request):
             rinstance["permalink"] = data["data"]["children"][i]["data"]["permalink"]
             rinstance["url"] = data["data"]["children"][i]["data"]["url"]
             rinstance["author"] = data["data"]["children"][i]["data"]["author"]
-            redditpost = RedditPost(reddit_id=rinstance["reddit_id"], permalink=rinstance["permalink"],
-                                    url=rinstance["url"], author=rinstance["author"])
-            redditpost.save()
+            if not RedditPost.objects.filter(reddit_id=rinstance["reddit_id"]).exists():
+                redditpost = RedditPost(reddit_id=rinstance["reddit_id"], permalink=rinstance["permalink"],
+                                        url=rinstance["url"], author=rinstance["author"])
+                redditpost.save()
             result.append(rinstance)
         return Response(result, status=status.HTTP_200_OK)
     else:
